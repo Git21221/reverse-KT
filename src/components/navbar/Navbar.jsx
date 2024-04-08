@@ -39,7 +39,7 @@ function navbar() {
                 </Link>
               </li>
               <li className="">
-                <Link href="profile">Hi, User</Link>
+                <Link href="profile">Hi, {user.fullName}</Link>
               </li>
               <li className="" onClick={handleLogout}>
                 Logout
@@ -62,8 +62,8 @@ function navbar() {
           )}
           {isLoggedIn && isCompanyHr && (
             <>
-              <li>Job Applied</li>
-              <li>Hii, HR</li>
+              <li><Link href='/applied-jobs'>Job Applied</Link></li>
+              <li>Hii, {user.fullName}</li>
               <li onClick={handleLogout}>Logout</li>
             </>
           )}

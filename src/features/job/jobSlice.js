@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setjobPersist, getJobPersist } from "@/persist/jobPersist";
+import { getJobPersist } from "@/persist/jobPersist";
 
 let jobList = [];
 
@@ -13,6 +13,9 @@ const job = createSlice({
   name: "job",
   initialState,
   reducers: {
+    setJob: (state, action) => {
+      state.jobList = action.payload.jobList;
+    },
     addJob: (state, action) => {
       state.jobList.push(action.payload.job);
     },
@@ -33,4 +36,4 @@ const job = createSlice({
 });
 
 export default job.reducer;
-export const { addJob, removeJob, updateJob } = job.actions;
+export const { setJob, addJob, removeJob, updateJob } = job.actions;

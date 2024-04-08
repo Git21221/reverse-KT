@@ -5,7 +5,7 @@ import { setAuth } from "@/features/auth/authSlice";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
-import { setAuthPersistForHr, setAuthPersistForUser } from "@/persist/authPersist";
+import { setAuthPersistForHr, setAuthPersistForUser, getAuthPersistForHr, getAuthPersistForUser } from "@/persist/authPersist";
 
 function page() {
   const {user, isLoggedIn, isCompanyHr} = useSelector((state) => state.auth);
@@ -13,6 +13,8 @@ function page() {
   const [password, setPassword] = useState("");
   const [isHr, setIsHr] = useState(false);
   const dispatch = useDispatch();
+  const hruser = getAuthPersistForHr();
+  const useruser = getAuthPersistForUser();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -26,13 +28,13 @@ function page() {
       return toast.error("Please fill all the fields");
     }
     isHr
-      ? setAuthPersistForHr({ user, isLoggedIn: true, isCompanyHr: isHr })
+      ? setAuthPersistForHr({user: hruser.user, isLoggedIn: true, isCompanyHr: isHr })
       : setAuthPersistForUser({
-          user,
+          user: useruser.user,
           isLoggedIn: true,
           isCompanyHr: isHr,
         });
-    dispatch(setAuth({ user, isLoggedIn: true, isCompanyHr: isHr }));
+    isHr ? dispatch(setAuth({ user: hruser.user, isLoggedIn: true, isCompanyHr: isHr })) : dispatch(setAuth({ user: useruser.user, isLoggedIn: true, isCompanyHr: isHr }));
   };
 
   return (
