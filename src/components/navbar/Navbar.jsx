@@ -34,12 +34,12 @@ function navbar() {
           {isLoggedIn && !isCompanyHr && (
             <>
               <li className="">
-                <Link href="/jobs" className="text-white">
+                <Link href="/pages/jobs" className="text-white">
                   Find jobs
                 </Link>
               </li>
               <li className="">
-                <Link href="profile">Hi, {user.fullName}</Link>
+                <Link href="/profile">Hi, {user.fullName}</Link>
               </li>
               <li className="" onClick={handleLogout}>
                 Logout
@@ -49,12 +49,12 @@ function navbar() {
           {!isLoggedIn && (
             <>
               <li className="">
-                <Link href="/login" className="text-white">
+                <Link href="/pages/login" className="text-white">
                   Login
                 </Link>
               </li>
               <li className="">
-                <Link href="/signup" className="text-white">
+                <Link href="/pages/signup" className="text-white">
                   Sign up
                 </Link>
               </li>
@@ -62,7 +62,7 @@ function navbar() {
           )}
           {isLoggedIn && isCompanyHr && (
             <>
-              <li><Link href='/applied-jobs'>Job Applied</Link></li>
+              <li><Link href='/pages/applied-jobs'>Job Applied</Link></li>
               <li>Hii, {user.fullName}</li>
               <li onClick={handleLogout}>Logout</li>
             </>

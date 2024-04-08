@@ -7,7 +7,7 @@ function page() {
   return (
     <div className="border border-neutral-600 rounded-lg p-4 m-4 flex flex-col gap-4">
       {jobList.filter((job) => job.isApplied).map((job) => (
-        <div className="border border-neutral-600 rounded-lg p-4">
+        <div key={job.id} className="border border-neutral-600 rounded-lg p-4">
           <span className="text-xl font-bold">{job.title}</span> - {job.appliedBy}
         </div>
       ))}
